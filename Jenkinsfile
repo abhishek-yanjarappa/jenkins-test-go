@@ -28,12 +28,6 @@ pipeline {
                 }
             }
         }
-
-        stage('Clean Up') {
-            steps {
-                // Clean up any temporary files or artifacts if needed
-            }
-        }
     }
 
     post {
