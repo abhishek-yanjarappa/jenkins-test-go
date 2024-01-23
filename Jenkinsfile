@@ -1,5 +1,9 @@
 pipeline {
-    agent { docker { image 'golang:1.21.6-alpine3.19' } }
+    agent {
+        docker {
+            image 'golang:1.16.6-alpine3.14'
+        }
+    }
 
     stages {
         stage('Checkout') {
@@ -12,8 +16,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                        sh "go build -o myapp"
-                    }
+                    sh "go build -o myapp"
                 }
             }
         }
@@ -21,8 +24,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                        "go test"
-                    }
+                    sh "go test ./..."
                 }
             }
         }
@@ -32,6 +34,8 @@ pipeline {
                 // Clean up any temporary files or artifacts if needed
             }
         }
+    }
+
     post {
         success {
             echo 'Build and tests passed! Deploy your application or perform additional tasks here.'
