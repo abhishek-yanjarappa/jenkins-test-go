@@ -32,8 +32,6 @@ pipeline {
                 // Clean up any temporary files or artifacts if needed
             }
         }
-    }
-
     post {
         success {
             echo 'Build and tests passed! Deploy your application or perform additional tasks here.'
