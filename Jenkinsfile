@@ -10,7 +10,8 @@ pipeline {
 
         stage('Check Workspace') {
             steps {
-                echo "WORKSPACE: ${env.WORKSPACE}"
+                sh "echo \"WORKSPACE: ${env.WORKSPACE}\""
+                sh ls
             }
         }
 
