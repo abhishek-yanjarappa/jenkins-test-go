@@ -1,9 +1,9 @@
 pipeline {
-    agent {
-        docker {
-            image 'golang:1.16.6-alpine3.14'
-        }
-    }
+    // agent {
+    //     docker {
+    //         image 'golang:1.16.6-alpine3.14'
+    //     }
+    // }
 
     stages {
         stage('Checkout') {
