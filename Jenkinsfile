@@ -18,6 +18,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh "go version"  // Check Go version for compatibility
+                sh "go mod init" // initialize go module
                 sh "go build -o myapp"
             }
         }
