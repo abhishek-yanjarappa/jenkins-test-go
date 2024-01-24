@@ -8,6 +8,12 @@ pipeline {
             }
         }
 
+        stage('Check Workspace') {
+            steps {
+                echo "WORKSPACE: ${env.WORKSPACE}"
+            }
+        }
+
         stage('Build') {
             steps {
                 sh "go version"  // Check Go version for compatibility
