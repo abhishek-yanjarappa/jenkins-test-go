@@ -1,8 +1,5 @@
 pipeline {
-    agent {
-        // Specify the appropriate agent for your environment (e.g., docker, label, etc.)
-        label 'my-build-agent'  // Example using a label
-    }
+    agent any
 
     stages {
         stage('Checkout') {
