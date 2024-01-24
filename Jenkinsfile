@@ -1,41 +1,38 @@
 pipeline {
-    // agent {
-    //     docker {
-    //         image 'golang:1.16.6-alpine3.14'
-    //     }
-    // }
+    agent {
+        // Specify the appropriate agent for your environment (e.g., docker, label, etc.)
+        label 'my-build-agent'  // Example using a label
+    }
 
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the source code from the Git repository
                 checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                script {
-                    sh "go build -o myapp"
-                }
+                sh "go version"  // Check Go version for compatibility
+                sh "go build -o myapp"
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    sh "go test"
-                }
+                sh "go test -v"  // Add verbosity for test results
             }
         }
     }
 
     post {
         success {
-            echo 'Build and tests passed! Deploy your application or perform additional tasks here.'
+            // Customize deployment or additional tasks here
+            echo 'Build and tests passed! Deploying myapp...'
         }
         failure {
-            echo 'Build or tests failed. Take appropriate actions.'
+            // Send notifications, archive artifacts, or initiate troubleshooting
+            echo 'Build or tests failed. Notifying team...'
         }
     }
 }
